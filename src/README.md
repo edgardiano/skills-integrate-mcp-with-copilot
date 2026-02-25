@@ -5,7 +5,8 @@ A super simple FastAPI application that allows students to view and sign up for 
 ## Features
 
 - View all available extracurricular activities
-- Sign up for activities
+- Teacher login/logout (Admin Mode)
+- Register and unregister students (teacher-only actions)
 
 ## Getting Started
 
@@ -18,7 +19,7 @@ A super simple FastAPI application that allows students to view and sign up for 
 2. Run the application:
 
    ```
-   python app.py
+   uvicorn app:app --reload
    ```
 
 3. Open your browser and go to:
@@ -30,7 +31,24 @@ A super simple FastAPI application that allows students to view and sign up for 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| POST   | `/auth/login?username=<user>&password=<pass>`                    | Login as teacher and receive auth token                             |
+| POST   | `/auth/logout`                                                    | Logout current teacher token                                        |
+| GET    | `/auth/status`                                                    | Check if current token belongs to a logged-in teacher               |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Register a student for an activity (teacher-only)                   |
+| DELETE | `/activities/{activity_name}/unregister?email=student@mergington.edu` | Remove a student from an activity (teacher-only)                    |
+
+## Admin Mode Credentials
+
+Teacher usernames/passwords are stored in `teachers.json` and validated by the backend.
+
+Example file:
+
+```json
+{
+   "ms.smith": "teach123",
+   "mr.johnson": "teach456"
+}
+```
 
 ## Data Model
 

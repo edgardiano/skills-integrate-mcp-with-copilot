@@ -22,10 +22,59 @@ header {
   background-color: #1a237e;
   color: white;
   border-radius: 5px;
+  position: relative;
 }
 
 header h1 {
   margin-bottom: 10px;
+}
+
+.auth-widget {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  text-align: left;
+}
+
+.icon-btn {
+  background-color: #fff;
+  color: #1a237e;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background-color: #f0f3ff;
+}
+
+.auth-panel {
+  position: absolute;
+  right: 0;
+  top: 46px;
+  width: 260px;
+  background-color: white;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 14px;
+  z-index: 50;
+}
+
+.auth-panel p {
+  margin-bottom: 10px;
+}
+
+.auth-panel .form-group {
+  margin-bottom: 10px;
+}
+
+.auth-panel .form-group input {
+  font-size: 14px;
+  padding: 8px;
 }
 
 main {
@@ -162,6 +211,11 @@ button {
 
 button:hover {
   background-color: #3949ab;
+}
+
+button:disabled {
+  background-color: #9fa8da;
+  cursor: not-allowed;
 }
 
 .message {
